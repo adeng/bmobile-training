@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js">
+		</script>
+		<script>
+			angular.module('test', [])
+
+			.controller('TestCtrl', function($scope, $rootScope, $http) {
+				$scope.test = "Hello World";
+
+				$http.get("https://www.googleapis.com/calendar/v3/calendars/en.usa%23holiday%40group.v.calendar.google.com/events/?key=AIzaSyDY7BaxHR6eQz1pgCNIXfu3Gm83_5eUXzA").success( function(data) {
+						$scope.events = data.items;
+					}).error( function(data) {
+					});
+
+				$scope.array = new Array();
+				for( var i = 0; i < 100; i++ ) {
+					$scope.array[i] = i;
+				}
+
+				console.log($scope.array);
+			});
+		</script>
+	</head>
+	<body ng-app="test">
+		<div ng-controller="TestCtrl" ng-include="'template.html'">
+		</div>
+	</body>
+</html>

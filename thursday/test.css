@@ -1,0 +1,42 @@
+.box {
+	width: 100px;
+}
+
+.box p {
+	border: 1px solid black;
+	width: 80px;
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 0px;
+}
+
+.box:hover .list {
+	display: block;
+}
+	
+.list {
+	list-style-type: none;
+	margin-top: 0px;
+	padding: 0px;
+	display: none;
+}
+
+.list li {
+	border: 1px solid black;
+	border-bottom: 0px;
+	width: 80px;
+	text-align: center;
+	padding: 10px;
+}
+
+ol li {
+	border-bottom: 1px solid black !important;
+}
+
+.list li:hover {
+	background-color: grey;
+}
+
+.list li:nth-child(4) {
+	border-bottom: 1px solid black;
+}

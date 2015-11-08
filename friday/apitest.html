@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js">
+		</script>
+		<script>
+			$.get("https://www.googleapis.com/calendar/v3/calendars/en.usa%23holiday%40group.v.calendar.google.com/events/?key=AIzaSyDY7BaxHR6eQz1pgCNIXfu3Gm83_5eUXzA", 
+				function( data ) {
+					console.log(data);
+					var array = data["items"];
+					console.log(array);
+					array.sort( 
+						function( a, b ) {
+							var dateA = Date.parse(a['start']['date']);
+							var dateB = Date.parse(b['start']['date']);
+
+							return dateB - dateA;
+						}
+					);
+
+					var now = Date.now();
+					var latest;
+
+					array.forEach(function(event) {
+						var time = Date.parse(event['start']['date']);
+						if( now <= time ) {
+							latest = event;
+						}
+					});
+					// alert(latest['summary']);
+					$("#day").text(latest['summary']);
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<h1>Next Event: </h1>
+		<p id="day">Hello World</p>
+	</body>
+</html>

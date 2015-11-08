@@ -1,0 +1,26 @@
+<style>
+	.taskbutton {
+		text-align: center;
+		padding: 10px;
+	}
+</style>
+
+<ion-view view-title="Home">
+	<ion-content>
+		<div class="taskbutton">
+			<h2>What do I have to do?</h2>
+
+			<br />
+
+			<ion-list>
+				<ion-item ng-repeat="item in items" ng-href="#/item/{{item.name}}/{{item.date}}/{{item.loc}}">{{item.name}}</ion-item>
+			</ion-list>
+
+			<br />
+
+			<button class="button button-block button-positive" ui-sref="add">
+	  			Add New Task
+			</button>
+		</div>
+	</ion-content>
+</ion-view>
